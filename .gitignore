@@ -19,7 +19,10 @@ out/
 
 # Gradle files
 .gradle/
-build/
+/build/
+app/build/**
+!app/build/allure-results/
+!app/build/allure-results/**
 
 # Local configuration file (sdk path, etc)
 local.properties
