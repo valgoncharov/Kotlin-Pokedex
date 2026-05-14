@@ -4,6 +4,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("io.qameta.allure") version "2.11.2"
 }
 apply(from = "../ktlint.gradle.kts")
 
@@ -38,6 +39,24 @@ android {
         viewBinding = true
     }
     namespace = "dev.marcosfarias.pokedex"
+}
+
+val allureAdapterVersion = "2.27.0"
+
+allure {
+    version.set(allureAdapterVersion)
+    adapter {
+        allureJavaVersion.set(allureAdapterVersion)
+        autoconfigure.set(true)
+        frameworks {
+            junit4 {
+                adapterVersion.set(allureAdapterVersion)
+            }
+        }
+    }
+    report {
+        dependsOnTests.set(true)
+    }
 }
 
 dependencies {
@@ -77,6 +96,8 @@ dependencies {
 
     // Test
     testImplementation("junit:junit:4.13.2")
+    testImplementation("io.qameta.allure:allure-junit4:$allureAdapterVersion")
+    testImplementation("io.qameta.allure:allure-java-commons:$allureAdapterVersion")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
