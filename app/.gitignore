@@ -1,1 +1,1 @@
-/build
+# Ignores for app/build live in the root .gitignore (Allure results are tracked there).
