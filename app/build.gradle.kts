@@ -5,8 +5,9 @@ plugins {
     id("kotlin-kapt")
     id("androidx.navigation.safeargs.kotlin")
     id("io.qameta.allure") version "2.11.2"
+    jacoco
 }
-apply(from = "../ktlint.gradle.kts")
+//apply(from = "../ktlint.gradle.kts")
 
 android {
     compileSdk = 33
@@ -20,6 +21,9 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        getByName("debug") {
+            enableUnitTestCoverage = true
+        }
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
@@ -108,4 +112,57 @@ dependencies {
     androidTestImplementation("io.mockk:mockk-agent-jvm:1.12.4")
     testImplementation("io.mockk:mockk:1.12.4")
     testImplementation("io.mockk:mockk-agent-jvm:1.12.4")
+}
+
+jacoco {
+    toolVersion = "0.8.11"
+}
+
+val jacocoCoverageClassExcludes = listOf(
+    "**/R.class",
+    "**/R\$*.class",
+    "**/BuildConfig.*",
+    "**/Manifest*.*",
+    "**/DataBinderMapperImpl*.*",
+    "**/databinding/**",
+    "**/androidx/databinding/**",
+    "**/BR.class",
+    "**/*_Factory.class",
+    "**/*_MembersInjector.class",
+    "**/Dagger*Component*.class",
+    "**/Hilt_*.*"
+)
+
+tasks.register<JacocoReport>("jacocoTestReport") {
+    group = "Reporting"
+    description = "HTML/XML coverage for debug unit tests (run testDebugUnitTest first if needed)."
+    dependsOn("testDebugUnitTest")
+
+    val javaTree = fileTree(layout.buildDirectory.dir("intermediates/javac/debug/classes")) {
+        exclude(jacocoCoverageClassExcludes)
+    }
+    val kotlinTree = fileTree(layout.buildDirectory.dir("tmp/kotlin-classes/debug")) {
+        exclude(jacocoCoverageClassExcludes)
+    }
+
+    classDirectories.setFrom(files(javaTree, kotlinTree))
+    sourceDirectories.setFrom(
+        files(
+            "src/main/java",
+            "src/main/kotlin"
+        )
+    )
+    executionData.setFrom(
+        files(
+            layout.buildDirectory.file("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec")
+        )
+    )
+
+    reports {
+        html.required.set(true)
+        xml.required.set(true)
+        csv.required.set(false)
+        html.outputLocation.set(layout.buildDirectory.dir("reports/jacoco/jacocoTestReport/html"))
+        xml.outputLocation.set(layout.buildDirectory.file("reports/jacoco/jacocoTestReport/jacocoTestReport.xml"))
+    }
 }
