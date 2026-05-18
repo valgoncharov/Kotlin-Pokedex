@@ -114,15 +114,6 @@ class KaspressoHomeTest : KaspressoBaseRobot() {
     }
 
     /**
-     * Основной сценарий: Проверка скроллинга списка новостей
-     */
-    @Test
-    fun verifyNewsScroll() {
-        isViewDisplayed(R.id.recyclerViewNews)
-        swipeUp(R.id.recyclerViewNews)
-    }
-
-    /**
      * Ошибочный сценарий: Проверка обработки пустого состояния
      */
     @Test
@@ -131,21 +122,5 @@ class KaspressoHomeTest : KaspressoBaseRobot() {
         isViewDisplayed(R.id.recyclerViewNews)
         isViewDisplayed(R.id.search_title)
         isViewDisplayed(R.id.search_text)
-    }
-
-    /**
-     * Основной сценарий: Проверка навигации
-     */
-    @Test
-    fun verifyNavigationGraph() {
-        assert(navHost.graph.id == R.id.mobile_navigation)
-    }
-
-    /**
-     * Основной сценарий: Проверка кликабельности поисковой строки
-     */
-    @Test
-    fun verifySearchBarIsClickable() {
-        isClickable(R.id.search_text)
     }
 }

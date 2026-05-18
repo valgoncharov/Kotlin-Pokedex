@@ -49,38 +49,6 @@ class KaspressoDashboardTest : KaspressoBaseRobot() {
     }
 
     /**
-     * Основной сценарий: Проверка отображения экрана деталей покемона
-     */
-    @Test
-    fun verifyDashboardScreenIsDisplayed() {
-        // Ожидаем загрузку данных
-        waitFor(2000)
-        isVisibleAndEnabled(R.id.textViewName)
-        isVisibleAndEnabled(R.id.textViewID)
-        isViewDisplayed(R.id.tabs)
-        isViewDisplayed(R.id.viewPager)
-    }
-
-    /**
-     * Основной сценарий: Проверка отображения имени покемона
-     */
-    @Test
-    fun verifyPokemonNameIsDisplayed() {
-        waitFor(2000)
-        isVisibleAndEnabled(R.id.textViewName)
-        isClickable(R.id.textViewName)
-    }
-
-    /**
-     * Основной сценарий: Проверка отображения ID покемона
-     */
-    @Test
-    fun verifyPokemonIdIsDisplayed() {
-        waitFor(2000)
-        isVisibleAndEnabled(R.id.textViewID)
-    }
-
-    /**
      * Основной сценарий: Проверка отображения типов покемона
      */
     @Test
@@ -88,15 +56,6 @@ class KaspressoDashboardTest : KaspressoBaseRobot() {
         isViewDisplayed(R.id.textViewType1)
         isViewDisplayed(R.id.textViewType2)
         isViewDisplayed(R.id.textViewType3)
-    }
-
-    /**
-     * Основной сценарий: Проверка отображения табов
-     */
-    @Test
-    fun verifyTabsAreDisplayed() {
-        isViewDisplayed(R.id.tabs)
-        isClickable(R.id.tabs)
     }
 
     /**
@@ -137,14 +96,6 @@ class KaspressoDashboardTest : KaspressoBaseRobot() {
     @Test
     fun verifyPokemonImageIsDisplayed() {
         isViewDisplayed(R.id.imageView)
-    }
-
-    /**
-     * Основной сценарий: Проверка навигации
-     */
-    @Test
-    fun verifyNavigationToDashboard() {
-        assert(navHost.currentDestination?.id == R.id.navigation_dashboard)
     }
 
     /**

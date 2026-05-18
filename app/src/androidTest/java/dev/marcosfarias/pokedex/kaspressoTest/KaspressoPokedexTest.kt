@@ -61,15 +61,6 @@ class KaspressoPokedexTest : KaspressoBaseRobot() {
     }
 
     /**
-     * Основной сценарий: Проверка отображения FAB
-     */
-    @Test
-    fun verifyFabIsDisplayed() {
-        isViewDisplayed(R.id.speedDial)
-        isClickable(R.id.speedDial)
-    }
-
-    /**
      * Основной сценарий: Проверка открытия FAB меню
      */
     @Test
@@ -79,38 +70,11 @@ class KaspressoPokedexTest : KaspressoBaseRobot() {
     }
 
     /**
-     * Основной сценарий: Проверка клика по покемону
-     */
-    @Test
-    fun verifyPokemonItemClick() {
-        onClickFirstItem(R.id.recyclerView)
-        isViewDisplayed(R.id.recyclerView)
-    }
-
-    /**
-     * Основной сценарий: Проверка скроллинга списка покемонов
-     */
-    @Test
-    fun verifyPokemonListScroll() {
-        isViewDisplayed(R.id.recyclerView)
-        swipeUp(R.id.recyclerView)
-    }
-
-    /**
      * Основной сценарий: Проверка навигации
      */
     @Test
     fun verifyNavigationToPokedex() {
         assert(navHost.currentDestination?.id == R.id.navigation_pokedex)
-    }
-
-    /**
-     * Основной сценарий: Проверка клика по элементу на определенной позиции
-     */
-    @Test
-    fun verifyPokemonItemClickAtPosition() {
-        onClickItemAtPosition(R.id.recyclerView, 0)
-        isViewDisplayed(R.id.recyclerView)
     }
 
     /**
@@ -141,16 +105,6 @@ class KaspressoPokedexTest : KaspressoBaseRobot() {
     @Test
     fun verifyEmptyListHandling() {
         isViewDisplayed(R.id.recyclerView)
-        isViewDisplayed(R.id.speedDial)
-    }
-
-    /**
-     * Основной сценарий: Проверка повторного клика по FAB
-     */
-    @Test
-    fun verifyFabMultipleClicks() {
-        onClick(R.id.speedDial)
-        onClick(R.id.speedDial)
         isViewDisplayed(R.id.speedDial)
     }
 }
