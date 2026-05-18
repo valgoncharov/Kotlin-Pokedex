@@ -1,4 +1,4 @@
-package dev.marcosfarias.pokedex
+package dev.marcosfarias.pokedex.kaspressoTest
 
 import android.os.Bundle
 import androidx.fragment.app.testing.FragmentScenario
@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import dev.marcosfarias.pokedex.R
 import dev.marcosfarias.pokedex.robots.KaspressoBaseRobot
 import dev.marcosfarias.pokedex.ui.dashboard.DashboardFragment
 import org.junit.Before
