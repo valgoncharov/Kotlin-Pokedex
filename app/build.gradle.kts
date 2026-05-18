@@ -6,7 +6,7 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
     id("io.qameta.allure") version "2.11.2"
 }
-apply(from = "../ktlint.gradle.kts")
+//apply(from = "../ktlint.gradle.kts")
 
 android {
     compileSdk = 33
@@ -17,7 +17,14 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "dev.marcosfarias.pokedex.CustomTestRunner"
+    }
+    
+    // Конфигурация для instrumented тестов
+    sourceSets {
+        getByName("androidTest") {
+            java.srcDir("src/androidTest/java")
+        }
     }
     buildTypes {
         getByName("release") {
@@ -102,10 +109,14 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
     androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
-    debugImplementation("androidx.fragment:fragment-testing:1.5.5")
+    androidTestImplementation("androidx.fragment:fragment-testing:1.6.2")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     androidTestImplementation("io.mockk:mockk-android:1.12.4")
-    androidTestImplementation("io.mockk:mockk-agent-jvm:1.12.4")
     testImplementation("io.mockk:mockk:1.12.4")
-    testImplementation("io.mockk:mockk-agent-jvm:1.12.4")
+
+    // Kaspresso
+    androidTestImplementation("com.kaspersky.android-components:kaspresso:1.5.1")
+    androidTestImplementation("com.kaspersky.android-components:kaspresso-allure-support:1.5.1")
+    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
 }
+    

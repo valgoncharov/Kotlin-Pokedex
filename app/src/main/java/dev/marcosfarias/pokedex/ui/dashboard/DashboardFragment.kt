@@ -34,7 +34,6 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        postponeEnterTransition()
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
@@ -48,7 +47,8 @@ class DashboardFragment : Fragment() {
         dashboardViewBinding?.imageView?.transitionName = name
 
         dashboardViewModel.getPokemonById(id).observe(viewLifecycleOwner, Observer { pokemonValue ->
-            pokemonValue?.let { pokemon ->
+            if (pokemonValue != null) {
+                val pokemon = pokemonValue
                 dashboardViewBinding?.textViewID?.text = pokemon.id
                 dashboardViewBinding?.textViewName?.text = pokemon.name
 
@@ -77,9 +77,6 @@ class DashboardFragment : Fragment() {
                 dashboardViewBinding?.imageView?.let {
                     GlideApp.with(view.context)
                         .load(pokemon.imageurl)
-                        .listener(ImageLoadingListener {
-                            startPostponedEnterTransition()
-                        })
                         .into(it)
                 }
                 val pager = dashboardViewBinding?.viewPager
@@ -87,6 +84,10 @@ class DashboardFragment : Fragment() {
                 pager?.adapter =
                     ViewPagerAdapter(childFragmentManager, requireContext(), pokemon.id)
                 tabs?.setupWithViewPager(pager)
+            } else {
+                // Устанавливаем значения по умолчанию когда данные не загружены
+                dashboardViewBinding?.textViewID?.text = id
+                dashboardViewBinding?.textViewName?.text = name
             }
         })
     }
