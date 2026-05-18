@@ -31,7 +31,7 @@ open class KaspressoBaseRobot {
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
     /**
-     * Проверяет, что элемент не отображается
+     * Проверяет, что элемент не отображается (Оставить ли такие методы ?)
      */
     protected fun isViewNotDisplayed(id: Int): ViewInteraction =
         Espresso.onView(ViewMatchers.withId(id))
