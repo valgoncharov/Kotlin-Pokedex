@@ -115,8 +115,8 @@ dependencies {
     testImplementation("io.mockk:mockk:1.12.4")
 
     // Kaspresso
-    androidTestImplementation("com.kaspersky.android-components:kaspresso:1.5.1")
-    androidTestImplementation("com.kaspersky.android-components:kaspresso-allure-support:1.5.1")
+    androidTestImplementation("com.kaspersky.android-components:kaspresso:1.5.5")
+    androidTestImplementation("com.kaspersky.android-components:kaspresso-allure-support:1.5.5")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
 }
     

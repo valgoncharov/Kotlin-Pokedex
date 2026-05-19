@@ -9,7 +9,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import dev.marcosfarias.pokedex.R
 import dev.marcosfarias.pokedex.robots.KaspressoBaseRobot
+import dev.marcosfarias.pokedex.robots.KaspressoBaseRobotImpl
 import dev.marcosfarias.pokedex.ui.pokedex.PokedexFragment
+import com.kaspersky.kaspresso.testcases.api.testcase.TestCase
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,7 +21,7 @@ import org.junit.runner.RunWith
  * Покрывает основные сценарии и ошибочные сценарии
  */
 @RunWith(AndroidJUnit4::class)
-class KaspressoPokedexTest : KaspressoBaseRobot() {
+class KaspressoPokedexTest : TestCase(), KaspressoBaseRobot by KaspressoBaseRobotImpl {
 
     lateinit var navHost: TestNavHostController
 
@@ -47,17 +49,21 @@ class KaspressoPokedexTest : KaspressoBaseRobot() {
      * Основной сценарий: Проверка отображения экрана покемонов
      */
     @Test
-    fun verifyPokedexScreenIsDisplayed() {
-        isViewDisplayed(R.id.recyclerView)
-        isViewDisplayed(R.id.speedDial)
+    fun verifyPokedexScreenIsDisplayed() = run {
+        step("Проверка отображения экрана покемонов"){
+            isViewDisplayed(R.id.recyclerView)
+            isViewDisplayed(R.id.speedDial)
+        }
     }
 
     /**
      * Основной сценарий: Проверка отображения списка покемонов
      */
     @Test
-    fun verifyPokemonListIsDisplayed() {
-        isViewDisplayed(R.id.recyclerView)
+    fun verifyPokemonListIsDisplayed() = run{
+        step("Проверка списка покемонов"){
+            isViewDisplayed(R.id.recyclerView)
+        }
     }
 
     /**

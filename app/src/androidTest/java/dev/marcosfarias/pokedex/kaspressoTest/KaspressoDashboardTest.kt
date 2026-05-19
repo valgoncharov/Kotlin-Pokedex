@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
  * Покрывает основные сценарии и ошибочные сценарии
  */
 @RunWith(AndroidJUnit4::class)
-class KaspressoDashboardTest : KaspressoBaseRobot() {
+class KaspressoDashboardTest : KaspressoBaseRobot {
 
     lateinit var navHost: TestNavHostController
     private lateinit var scenario: FragmentScenario<DashboardFragment>
