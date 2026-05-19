@@ -65,8 +65,8 @@ dependencies {
     // Architecture
     implementation("androidx.appcompat:appcompat:1.6.1")
 
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.9.8")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.9.8")
 
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -101,7 +101,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
-    androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
+    androidTestImplementation("androidx.navigation:navigation-testing:2.9.8")
     androidTestImplementation("androidx.test:core:1.4.0")
     androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
     debugImplementation("androidx.fragment:fragment-testing:1.5.5")
