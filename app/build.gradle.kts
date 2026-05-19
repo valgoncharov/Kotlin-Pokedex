@@ -99,7 +99,7 @@ dependencies {
     testImplementation("io.qameta.allure:allure-junit4:$allureAdapterVersion")
     testImplementation("io.qameta.allure:allure-java-commons:$allureAdapterVersion")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
     androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
     androidTestImplementation("androidx.test:core:1.4.0")
