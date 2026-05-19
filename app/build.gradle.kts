@@ -91,8 +91,8 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.13.2")
 
     // Koin
-    implementation("io.insert-koin:koin-android:3.2.0")
-    implementation("io.insert-koin:koin-core:3.2.0")
+    implementation("io.insert-koin:koin-android:4.2.1")
+    implementation("io.insert-koin:koin-core:4.2.1")
 
     // Test
     testImplementation("junit:junit:4.13.2")
