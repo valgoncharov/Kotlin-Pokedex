@@ -102,10 +102,16 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
     androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
+    androidTestImplementation("androidx.test:core:1.4.0")
+    androidTestImplementation("androidx.test.uiautomator:uiautomator:2.2.0")
     debugImplementation("androidx.fragment:fragment-testing:1.5.5")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
-    androidTestImplementation("io.mockk:mockk-android:1.12.4")
-    androidTestImplementation("io.mockk:mockk-agent-jvm:1.12.4")
+    androidTestImplementation("io.mockk:mockk-android:1.12.4") {
+        exclude(group = "io.mockk", module = "mockk-agent-jvm")
+    }
     testImplementation("io.mockk:mockk:1.12.4")
     testImplementation("io.mockk:mockk-agent-jvm:1.12.4")
+
+    // Appium
+    androidTestImplementation("io.appium:java-client:7.6.0")
 }
