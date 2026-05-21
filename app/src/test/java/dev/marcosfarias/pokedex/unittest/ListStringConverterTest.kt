@@ -7,42 +7,42 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
-@Epic("Unit")
+@Epic("Unit tests")
 @Feature("ListStringConverter")
 class ListStringConverterTest {
 
     private val converter = ListStringConverter()
 
     @Test
-    fun roundTrip_preservesOrderAndValues() {
+    fun `Check round Trip preserves Order And Values`() {
         val original = listOf("grass", "poison", "flying")
         val json = converter.fromList(original)
         assertEquals(original, converter.fromString(json))
     }
 
     @Test
-    fun emptyList_roundTrip() {
+    fun `Check empty List round Trip`() {
         val original = emptyList<String>()
         val json = converter.fromList(original)
         assertEquals(original, converter.fromString(json))
     }
 
     @Test
-    fun singleElement_roundTrip() {
+    fun `single Element round Trip`() {
         val original = listOf("pikachu")
         val json = converter.fromList(original)
         assertEquals(original, converter.fromString(json))
     }
 
     @Test
-    fun specialCharacters_roundTrip() {
+    fun `special Characters round Trip`() {
         val original = listOf("a b", "\"quoted\"", "unicode: печать", "tab\there")
         val json = converter.fromList(original)
         assertEquals(original, converter.fromString(json))
     }
 
     @Test
-    fun fromString_emptyJsonArray_returnsEmptyList() {
+    fun `from string empty Json Array returns Empty List`() {
         val result = converter.fromString("[]")
         assertTrue(result.isEmpty())
     }
