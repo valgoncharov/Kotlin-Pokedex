@@ -28,21 +28,21 @@ class ListStringConverterTest {
     }
 
     @Test
-    fun `single Element round Trip`() {
+    fun `Check single Element round Trip`() {
         val original = listOf("pikachu")
         val json = converter.fromList(original)
         assertEquals(original, converter.fromString(json))
     }
 
     @Test
-    fun `special Characters round Trip`() {
+    fun `Check special Characters round Trip`() {
         val original = listOf("a b", "\"quoted\"", "unicode: печать", "tab\there")
         val json = converter.fromList(original)
         assertEquals(original, converter.fromString(json))
     }
 
     @Test
-    fun `from string empty Json Array returns Empty List`() {
+    fun `Check from string empty Json Array returns Empty List`() {
         val result = converter.fromString("[]")
         assertTrue(result.isEmpty())
     }
